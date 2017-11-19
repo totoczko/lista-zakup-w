@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_activity"
+    tools:context="com.example.martyna.listazakupow.MainActivity">
+
+    <TextView
+        android:id="@+id/lista_zakupow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lista_zakup_w"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17dp"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/moja_lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/moja_lista"
+        android:layout_below="@id/lista_zakupow"
+        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:minWidth="64dp"
+        android:background="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:onClick="click_moja_lista"/>
+
+    <Button
+        android:id="@+id/ustawienia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ustawienia"
+        android:layout_below="@id/moja_lista"
+        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:minWidth="64dp"
+        android:background="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:onClick="click_ustawienia"/>
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/settings_activity"
+    tools:context="com.example.martyna.listazakupow.SettingsActivity">
+
+    <TextView
+        android:id="@+id/ustawienia2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ustawienia"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/rozmiar_czcionki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rozmiar_czcionki"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/ustawienia2"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="17dp"
+        android:textSize="16sp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/kolor_czcionki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kolor_czcionki"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/rozmiar_czcionki"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="17dp"
+        android:textSize="16sp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/edit_size"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/ustawienia2"
+        />
+
+
+    <Spinner
+        android:id="@+id/edit_color"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="17dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/edit_size"
+        android:spinnerMode="dropdown"/>
+
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zapisz_ustawienia"
+        android:layout_below="@id/kolor_czcionki"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:minWidth="64dp"
+        android:background="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:onClick="onClickSave"/>
+
+
+</RelativeLayout>
