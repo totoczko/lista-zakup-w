@@ -69,6 +69,7 @@
         android:layout_below="@+id/addNewQuantity"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
+        android:onClick="insertNewItemRow"
         android:text="dodaj" />
 
 
