@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".parentActivity"></activity>
+        <activity android:name=".parentActivity" />
+        <activity android:name=".DBOpenHelper"></activity>
     </application>
 
 </manifest>

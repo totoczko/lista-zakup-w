@@ -28,6 +28,7 @@ public class parentActivity extends AppCompatActivity {
         //get shared preferences (font size & color)
         customGetSharedPreferences();
         changeColor((ViewGroup) findViewById(android.R.id.content));
+        changeSize((ViewGroup) findViewById(android.R.id.content));
     }
 
     @Override
@@ -37,6 +38,7 @@ public class parentActivity extends AppCompatActivity {
         //get shared preferences (font size & color)
         customGetSharedPreferences();
         changeColor((ViewGroup) findViewById(android.R.id.content));
+        changeSize((ViewGroup) findViewById(android.R.id.content));
     }
 
     public void customGetSharedPreferences(){
@@ -62,6 +64,17 @@ public class parentActivity extends AppCompatActivity {
                 }
             } else if(view instanceof ViewGroup && !(view instanceof Button) && !(view instanceof EditText) && !(view instanceof Spinner)){
                 changeColor((ViewGroup)view);
+            }
+        }
+    }
+
+    public void changeSize(ViewGroup parentLayout){
+        for (int count=0; count < parentLayout.getChildCount(); count++){
+            View view = parentLayout.getChildAt(count);
+            if(view instanceof TextView && !(view instanceof Button)){
+                ((TextView)view).setTextSize(Integer.parseInt(sizeFromPreferences));
+            } else if(view instanceof ViewGroup && !(view instanceof Button)){
+                changeSize((ViewGroup)view);
             }
         }
     }

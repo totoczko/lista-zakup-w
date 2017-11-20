@@ -1,8 +1,9 @@
 package com.example.martyna.listazakupow;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class ListActivity extends parentActivity {
+public class ListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

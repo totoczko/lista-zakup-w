@@ -38,7 +38,7 @@ public class SettingsActivity extends parentActivity {
         //change font size & color
         customGetSharedPreferences();
         changeColor((ViewGroup) findViewById(R.id.settings_activity));
-        showToast("Zapisano");
+        changeSize((ViewGroup) findViewById(R.id.settings_activity));
     }
 
     private void showToast(String msg) {
@@ -53,10 +53,21 @@ public class SettingsActivity extends parentActivity {
         String editSizeData = edit_size.getText().toString();
         int editColorData = edit_color.getSelectedItemPosition();
 
-        //save them into editor
-        preferencesEditor.putString(PREFERENCES_SIZE_FIELD, editSizeData);
+        if(!editSizeData.equals("")){
+            if(Integer.parseInt(editSizeData) < 8){
+                showToast("Wpisany rozmiar czcionki jest zbyt mały");
+            }else if(Integer.parseInt(editSizeData) > 36){
+                showToast("Wpisany rozmiar czcionki jest zbyt duży");
+            }else{
+                //save them into editor
+                preferencesEditor.putString(PREFERENCES_SIZE_FIELD, editSizeData);
+                showToast("Zapisano");
+            }
+        }
+
         preferencesEditor.putInt(PREFERENCES_COLOR_FIELD, editColorData);
         preferencesEditor.commit();
+
 }
 
     private void applyDataToInputs() {
