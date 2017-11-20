@@ -19,7 +19,8 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".parentActivity" />
-        <activity android:name=".DBOpenHelper"></activity>
+        <activity android:name=".DBOpenHelper" />
+        <activity android:name=".AddItemActivity"></activity>
     </application>
 
 </manifest>

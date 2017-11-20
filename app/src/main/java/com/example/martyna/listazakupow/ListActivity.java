@@ -1,9 +1,11 @@
 package com.example.martyna.listazakupow;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class ListActivity extends AppCompatActivity {
@@ -36,5 +38,10 @@ public class ListActivity extends AppCompatActivity {
             // resources and makes it invalid.
             cursor.close();
         }
+    }
+
+    public void goToAddNew(View v){
+        Intent intent_add = new Intent(this, AddItemActivity.class);
+        startActivity(intent_add);
     }
 }
