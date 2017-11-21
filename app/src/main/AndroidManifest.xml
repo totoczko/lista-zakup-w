@@ -21,6 +21,11 @@
         <activity android:name=".parentActivity" />
         <activity android:name=".DBOpenHelper" />
         <activity android:name=".AddItemActivity"></activity>
+        <provider android:authorities="com.example.martyna.listazakupow"
+            android:name="com.example.martyna.listazakupow.GroceryProvider"
+            android:exported="false">
+        </provider>
     </application>
+
 
 </manifest>

@@ -2,7 +2,6 @@ package com.example.martyna.listazakupow;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,7 +21,7 @@ public class ListActivity extends parentActivity {
         DBHelper mDbHelper = new DBHelper(this);
 
         // Create and/or open a database to read from it
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+//        SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         //reading from db
         //which column are we interested in
@@ -33,22 +32,26 @@ public class ListActivity extends parentActivity {
                 groceryContract.GroceryEntry.COLUMN_NAME_QUANTITY
         };
 
-        //selection, stectionArgs - which row are we interested in
+        //selection, selectionArgs - which row are we interested in
 
-        Cursor cursor = db.query(
-                groceryContract.GroceryEntry.TABLE_NAME,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                null);
+//        Cursor cursor = db.query(
+//                groceryContract.GroceryEntry.TABLE_NAME,
+//                projection,
+//                null,
+//                null,
+//                null,
+//                null,
+//                null);
+
+        //use ContentProvider
+        Cursor cursor = getContentResolver().query(groceryContract.GroceryEntry.CONTENT_URI, projection, null, null, null, null);
 
         //display the list items
+        TextView displayView = (TextView) findViewById(R.id.checkDB);
+
         try {
             // Display the number of rows in the Cursor (which reflects the number of rows in the
             // pets table in the database).
-            TextView displayView = (TextView) findViewById(R.id.checkDB);
             displayView.setText("Number of rows in grocery database table: " + cursor.getCount());
 
             int idColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry._ID);
@@ -61,7 +64,6 @@ public class ListActivity extends parentActivity {
                 String currentTitle = cursor.getString(titleColumnIndex);
                 String currentPrice = cursor.getString(priceColumnIndex);
                 int currentQuantity = cursor.getInt(quantityColumnIndex);
-
                 displayView.append("\n" + currentID + " - " + currentTitle + " - " + currentPrice + " - " + currentQuantity);
             }
 
@@ -76,4 +78,5 @@ public class ListActivity extends parentActivity {
         Intent intent_add = new Intent(this, AddItemActivity.class);
         startActivity(intent_add);
     }
+
 }
