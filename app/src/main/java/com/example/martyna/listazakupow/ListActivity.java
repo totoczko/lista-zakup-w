@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ListView;
 
 public class ListActivity extends parentActivity {
 
@@ -47,31 +47,39 @@ public class ListActivity extends parentActivity {
         Cursor cursor = getContentResolver().query(groceryContract.GroceryEntry.CONTENT_URI, projection, null, null, null, null);
 
         //display the list items
-        TextView displayView = (TextView) findViewById(R.id.checkDB);
+        //TextView displayView = (TextView) findViewById(R.id.checkDB);
 
-        try {
-            // Display the number of rows in the Cursor (which reflects the number of rows in the
-            // pets table in the database).
-            displayView.setText("Number of rows in grocery database table: " + cursor.getCount());
+//        try {
+//            // Display the number of rows in the Cursor (which reflects the number of rows in the
+//            // pets table in the database).
+//            displayView.setText("Number of rows in grocery database table: " + cursor.getCount());
+//
+//            int idColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry._ID);
+//            int titleColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry.COLUMN_NAME_TITLE);
+//            int priceColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry.COLUMN_NAME_PRICE);
+//            int quantityColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry.COLUMN_NAME_QUANTITY);
+//
+//            while(cursor.moveToNext()){
+//                int currentID = cursor.getInt(idColumnIndex);
+//                String currentTitle = cursor.getString(titleColumnIndex);
+//                String currentPrice = cursor.getString(priceColumnIndex);
+//                int currentQuantity = cursor.getInt(quantityColumnIndex);
+//                displayView.append("\n" + currentID + " - " + currentTitle + " - " + currentPrice + " - " + currentQuantity);
+//            }
+//        } finally {
+//            // Always close the cursor when you're done reading from it. This releases all its
+//            // resources and makes it invalid.
+//            cursor.close();
+//        }
 
-            int idColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry._ID);
-            int titleColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry.COLUMN_NAME_TITLE);
-            int priceColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry.COLUMN_NAME_PRICE);
-            int quantityColumnIndex = cursor.getColumnIndex(groceryContract.GroceryEntry.COLUMN_NAME_QUANTITY);
+        ListView groceryList = (ListView) findViewById(R.id.groceryList);
 
-            while(cursor.moveToNext()){
-                int currentID = cursor.getInt(idColumnIndex);
-                String currentTitle = cursor.getString(titleColumnIndex);
-                String currentPrice = cursor.getString(priceColumnIndex);
-                int currentQuantity = cursor.getInt(quantityColumnIndex);
-                displayView.append("\n" + currentID + " - " + currentTitle + " - " + currentPrice + " - " + currentQuantity);
-            }
+        //       // Setup an Adapter to create a list item for each row of pet data in the Cursor.
+        GroceryCursorAdapter adapter = new GroceryCursorAdapter(this, cursor);
 
-        } finally {
-            // Always close the cursor when you're done reading from it. This releases all its
-            // resources and makes it invalid.
-            cursor.close();
-        }
+        // Attach the adapter to the ListView.
+        groceryList.setAdapter(adapter);
+
     }
 
     public void goToAddNew(View v){

@@ -43,7 +43,7 @@ public class parentActivity extends AppCompatActivity {
 
     public void customGetSharedPreferences(){
         preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
-        sizeFromPreferences = preferences.getString(PREFERENCES_SIZE_FIELD, "");
+        sizeFromPreferences = preferences.getString(PREFERENCES_SIZE_FIELD, "14");
         colorFromPreferences = preferences.getInt(PREFERENCES_COLOR_FIELD,0);
     }
 
