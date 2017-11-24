@@ -8,6 +8,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -62,6 +63,19 @@ public class AddItemActivity extends parentActivity
         // Gets the database in write mode
         //SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
+        // Check if this is supposed to be a new pet
+        // and check if all the fields in the editor are blank
+        if(mCurrentUri == null && TextUtils.isEmpty(groceryName) && TextUtils.isEmpty(groceryPrice) && TextUtils.isEmpty(groceryQuantity)){
+            // Since no fields were modified, we can return early without creating a new pet.
+            // No need to create ContentValues and no need to do any ContentProvider operations.
+            return;
+        }
+
+        if (TextUtils.isEmpty(groceryName) || TextUtils.isEmpty(groceryPrice) || TextUtils.isEmpty(groceryQuantity)){
+            Toast.makeText(this, "Wypełnij wszystkie pola!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Create a ContentValues object where column names are the keys,
         // and pet attributes from the editor are the values.
         ContentValues values = new ContentValues();
@@ -103,6 +117,28 @@ public class AddItemActivity extends parentActivity
                 Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void deleteItemRow(View v) {
+        // Only perform the delete if this is an existing pet.
+        if (mCurrentUri != null) {
+            // Call the ContentResolver to delete the pet at the given content URI.
+            // Pass in null for the selection and selection args because the mCurrentPetUri
+            // content URI already identifies the pet that we want.
+            int rowsDeleted = getContentResolver().delete(mCurrentUri, null, null);
+
+            // Show a toast message depending on whether or not the delete was successful.
+            if (rowsDeleted == 0) {
+                  // If no rows were deleted, then there was an error with the delete.
+                  Toast.makeText(this, getString(R.string.editor_delete_failed), Toast.LENGTH_SHORT).show();
+            } else {
+                  // Otherwise, the delete was successful and we can display a toast.
+                  Toast.makeText(this, getString(R.string.editor_delete_successful), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        // Close the activity
+        finish();
     }
 
     @Override

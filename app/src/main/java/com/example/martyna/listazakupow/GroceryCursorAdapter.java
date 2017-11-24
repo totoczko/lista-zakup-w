@@ -49,4 +49,5 @@ public class GroceryCursorAdapter extends CursorAdapter {
         priceTextView.setText(itemPrice);
         quantityTextView.setText(itemQuantity);
     }
+
 }
