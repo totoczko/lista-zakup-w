@@ -15,6 +15,11 @@ public class ListActivity extends parentActivity {
         displayDatabaseInfo();
     }
 
+    protected void onResume(){
+        super.onResume();
+        displayDatabaseInfo();
+    }
+
     private void displayDatabaseInfo() {
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
