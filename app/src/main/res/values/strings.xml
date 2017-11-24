@@ -81,4 +81,6 @@
     <string name="lista_zakup_w">Lista zakupów</string>
     <string name="moja_lista_zakup_w">Moja lista zakupów</string>
     <string name="kupione">KUPIONE</string>
+    <string name="editor_activity_title_new_item">Dodaj nowy</string>
+    <string name="editor_activity_title_edit_item">Edytuj</string>
 </resources>

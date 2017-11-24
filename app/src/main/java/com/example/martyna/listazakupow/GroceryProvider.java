@@ -46,7 +46,7 @@ public class GroceryProvider extends ContentProvider{
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
 
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
-        Cursor cursor = null;
+        Cursor cursor;
         int match = sUriMatcher.match(uri);
         
         switch (match){
